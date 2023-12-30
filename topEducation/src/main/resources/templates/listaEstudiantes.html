@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>topEducation</title>
+</head>
+<body>
+
+    <!--Si le llega una lista de estudiantes, se muestra la información en una tabla -->
+    <div th:if="${estudiantes != null and !estudiantes.isEmpty()}">
+
+        <!-- Mostrar mensaje de éxito si existe -->
+        <div th:if="${registro}" class="alert alert-success">
+            <p th:text="${registro}"></p>
+        </div>
+
+
+        <table>
+            <tr>
+                <th>Rut</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha nacimiento</th>
+                <th>Nombre Colegio</th>
+                <th>Tipo Colegio</th>
+                <th>Año egreso</th>
+            <tr>
+
+            <tr th:each="estudiante : ${estudiantes}">
+                <td th:text="${estudiante.rut}">rut</td>
+                <td th:text="${estudiante.nombre}">nombre</td>
+                <td th:text="${estudiante.apellido}">apellido</td>
+                <td th:text="${estudiante.fecha_nacimiento}">fecha de nacimiento</td>
+                <td th:text="${estudiante.nombre_colegio}">nombre colegio</td>
+                <td th:text="${estudiante.colegio.getTipo()}">tipo colegio</td>
+                <td th:text="${estudiante.anio_egreso}">año de egreso</td>
+            </tr>
+
+        </table>
+    </div>
+
+    <!--Si no llega una lista -->
+    <div th:if="${estudiantes == null or estudiantes.isEmpty()}">
+        <h2>No hay estudiantes</h2>
+
+    </div>
+
+
+</body>
+</html>
