@@ -15,21 +15,16 @@ public class Colegio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    Integer id_colegio;
 
-    String tipo; // municipal, privado y subvencionado
+    String tipo_colegio; // municipal, privado y subvencionado
+
+    String nombre_colegio; // nombre del colegio
 
     Integer nro_cuotas; // municipal: 10, privado: 3 y subvencionado: 7
 
+    // un colegio tiene muchos estudiantes
     @OneToMany(mappedBy = "colegio")
-    List<Estudiante> estudianteList;
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public Integer getNro_cuotas() {
-        return nro_cuotas;
-    }
+    List<Estudiante> lista_estudiantes;
 
 }

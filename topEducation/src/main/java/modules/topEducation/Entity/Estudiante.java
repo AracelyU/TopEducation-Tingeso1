@@ -16,15 +16,16 @@ import java.util.Date;
 public class Estudiante {
 
     @Id
-    String rut;
-    String nombre;
-    String apellido;
-    Date fecha_nacimiento;
-    String nombre_colegio;
-    Integer anio_egreso;
+    private String rut;
 
+    private String nombre_estudiante;
+    private String apellido_estudiante;
+    private Date fecha_nacimiento;
+    private Integer anio_egreso; // año en que ingreso
+
+    // muchos estudiantes estas asociados a un colegio
     @ManyToOne
     @JoinColumn(name = "fk_colegio")
-    Colegio colegio;
+    public Colegio colegio;
 
 }
